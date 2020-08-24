@@ -5,7 +5,7 @@ export default function Header() {
     return(
         <header style={headerStyle}>
             <h1>TodoList</h1>
-            <a href='/' style = {linkStyle}>Home</a>~<a href='/about' style = {linkStyle}>About</a>
+            <a href='/' style = {linkStyle}>Home</a>|<a href='/about' style = {linkStyle}>About</a>
         </header>
     )
 }

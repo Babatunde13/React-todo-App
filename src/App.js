@@ -1,9 +1,10 @@
 import React from 'react';
-// import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Todos from './components/todos/Todos';
 import AddTodo from './components/todos/AddTodo';
 import './App.css';
 import Header from './components/layout/Header'
+import About from './components/pages/About';
 
 class App extends  React.Component {
   state = {
@@ -56,27 +57,24 @@ class App extends  React.Component {
 
   render() {
     return (
-      // <Router>
+      <Router>
         <div className="App">
           <div className='container'>
             <Header />
-            <AddTodo addTodo={this.addTodo} />
-            <Todos todos={this.state.todos} markComplete={ this.markComplete } 
-            delTodo={this.delTodo} />
+            <Route exact path='/' render={props => (
+              <React.Fragment>
+                  <AddTodo addTodo={this.addTodo} />
+                  <Todos todos={this.state.todos} markComplete={ this.markComplete } 
+                  delTodo={this.delTodo} />
+             </React.Fragment>
+            )} />
+            <Route path='/about' component={About} />
           </div>
         </div>
-      // </Router>
+      </Router>
     );
   }
 }
 
 export default App;
 
-// <Route exact path='/' render={props => (
-//   <React.Fragment>
-      // <AddTodo addTodo={this.addTodo} />
-      // <Todos todos={this.state.todos} markComplete={ this.markComplete } 
-      // delTodo={this.delTodo} />
-//  </React.Fragment>
-// )} />
-// <Route path='/' component={About} />
