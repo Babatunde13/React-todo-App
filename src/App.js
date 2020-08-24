@@ -1,10 +1,13 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import axios from 'axios';
 import Todos from './components/todos/Todos';
 import AddTodo from './components/todos/AddTodo';
 import './App.css';
 import Header from './components/layout/Header'
 import About from './components/pages/About';
+import Contact from './components/pages/Contact';
+import Users from './components/pages/Misc';
 
 class App extends  React.Component {
   state = {
@@ -69,6 +72,8 @@ class App extends  React.Component {
              </React.Fragment>
             )} />
             <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/user/:name' component={Users} />
           </div>
         </div>
       </Router>
