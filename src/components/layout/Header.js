@@ -2,22 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 export default class Header extends React.Component{
-    // state = {
-    //     title: ''
-    // };
 
-    // handleInput = (e) => {
-    //     this.setState({title: e.target.valie})
-    //     console.log(this.state.title)
-    // }
     render () {
+        let path=`/user/${this.props.name}`
         return(
             <header style={headerStyle}>
                 <h1>TodoList</h1>
                 <Link to='/' style = {linkStyle}>Home</Link>{' '}| {' '}
                 <Link to='/about' style = {linkStyle}>About</Link>{' '}| {' '}
                 <Link to='/contact' style = {linkStyle}>Contact</Link>{' '}| {' '}
-                <Link to='/user/babatunde' style = {linkStyle}>Babatunde</Link>
+                <input type='text' 
+                    name='name' 
+                    placeholder='Enter name'
+                    style = {{flex: '10', padding: '5px'}} 
+                    onChange={this.props.addName} />{' '}| {' '}
+                <Link to={path} style = {linkStyle}>{this.props.name}</Link>
             </header>
         )
     }

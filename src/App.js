@@ -27,7 +27,8 @@ class App extends  React.Component {
         title: 'Write code',
         completed: true
       }
-    ]
+    ],
+    name:''
   }
 
   markComplete = id => {
@@ -35,7 +36,8 @@ class App extends  React.Component {
       todos: this.state.todos.map(todo => {
         todo.completed = todo.id === id? !todo.completed: todo.completed
         return todo;
-      }) 
+      }),
+      name: ''
     });
   }
 
@@ -58,12 +60,20 @@ class App extends  React.Component {
     });
   }
 
+  addName =(e) => {
+    e.preventDefault();
+    this.setState({
+      todos: [...this.state.todos],
+      name: e.target.value
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <div className='container'>
-            <Header />
+            <Header addName={this.addName} name={this.state.name} />
             <Route exact path='/' render={props => (
               <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
